@@ -42,8 +42,8 @@ post_build:
 
 physcore: mpas_atm_dimensions.o
 	( cd physics; $(MAKE) all )
-        ( cd stochastic_physics; $(MAKE) -f Makefile all )
-        ( mkdir libphys; cd libphys; ar -x ../physics/libphys.a; ar -x ../stochastic_physics/libstochphys.a )
+	( cd stochastic_physics; $(MAKE) -f Makefile all )
+	( mkdir libphys; cd libphys; ar -x ../physics/libphys.a; ar -x ../stochastic_physics/libstochphys.a )
 	( cd ../..; ln -sf ./src/core_atmosphere/physics/physics_wrf/files/*TBL .)
 	( cd ../..; ln -sf ./src/core_atmosphere/physics/physics_wrf/files/*DATA* .)
 	( cd ../..; ln -sf ./src/core_atmosphere/physics/physics_noahmp/parameters/*TBL .)
@@ -69,7 +69,7 @@ mpas_atm_dimensions.o:
 clean:
 	( cd physics; $(MAKE) clean )
 	( cd dynamics; $(MAKE) clean )
-        ( cd stochastic_physics; $(MAKE) clean )
+	( cd stochastic_physics; $(MAKE) clean )
 	( cd diagnostics; $(MAKE) clean )
 	( cd utils; $(MAKE) clean )
 	( cd ../..; rm -f *TBL )
